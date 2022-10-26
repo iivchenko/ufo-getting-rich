@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/sprites/kenney_enemies.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/kenney_platformer_tiles.png" type="Texture" id=2]
+[ext_resource path="res://objects/island/Island.cs" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 138.004
 
 [node name="Island" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Enemies" type="Sprite" parent="."]
 position = Vector2( -45, -59 )
@@ -72,3 +77,9 @@ position = Vector2( 83, 35 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 140.856, 247.589, 58.4758, 34.2201 )
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2( 0, 21 )
+shape = SubResource( 1 )
