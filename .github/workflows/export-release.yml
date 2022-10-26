@@ -1,0 +1,31 @@
+name: Export Debug
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:      
+  win-x64:
+    uses: ./.github/workflows/export-core.yml
+    name: Windows x64
+    with:
+      GODOT_VERSION: 3.5.1
+      TARGET: winx64
+  linux-x64:
+    uses: ./.github/workflows/export-core.yml
+    name: Linux x64
+    with:
+      GODOT_VERSION: 3.5.1
+      TARGET: linuxx64
+  mac-os:
+    uses: ./.github/workflows/export-core.yml
+    name: MacOs X64
+    with:
+      GODOT_VERSION: 3.5.1
+      TARGET: macosx64
+  html5:
+    uses: ./.github/workflows/export-core.yml
+    name: HTML5
+    with:
+      GODOT_VERSION: 3.5.1
+      TARGET: html5

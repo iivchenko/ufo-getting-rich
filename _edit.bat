@@ -1,0 +1,1 @@
+powershell -command "Import-Module .\infra\infra.psm1; Run-Editor"

@@ -1,0 +1,45 @@
+on:
+  workflow_call:
+    inputs:
+      GODOT_VERSION:
+        required: true
+        type: string
+      TARGET: 
+        required: true
+        type: string
+  
+jobs:
+  godot-export:
+    runs-on: ubuntu-latest
+    name: Export
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download Godot Templates
+        run: |
+            url=https://downloads.tuxfamily.org/godotengine/${{ inputs.GODOT_VERSION }}/mono/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_export_templates.tpz
+            zip=~/.local/share/godot/templates/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_export_templates.tpz
+            
+            mkdir -p ~/.local/share/godot/templates
+            wget $url -P ~/.local/share/godot/templates/
+            unzip $zip -d ~/.local/share/godot/templates/
+            mv ~/.local/share/godot/templates/templates ~/.local/share/godot/templates/${{ inputs.GODOT_VERSION }}.stable.mono
+            rm $zip
+            
+      - name: Download Godot Headless Engine
+        run: |
+            url=https://downloads.tuxfamily.org/godotengine/${{ inputs.GODOT_VERSION }}/mono/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_linux_headless_64.zip
+            
+            mkdir .tools
+            wget $url -P .tools/
+            unzip .tools/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_linux_headless_64.zip -d .tools
+            rm .tools/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_linux_headless_64.zip
+      - name: Export
+        run: |
+            mkdir -p .publish/${{ inputs.TARGET }}
+            .tools/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_linux_headless_64/Godot_v${{ inputs.GODOT_VERSION }}-stable_mono_linux_headless.64 --export ${{ inputs.TARGET }} --path ./src
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ format('run-foxy-run-{0}-{1}.{2}-alpha', inputs.TARGET, '0.1', github.run_number) }}
+          path: .publish/${{ inputs.TARGET }}
