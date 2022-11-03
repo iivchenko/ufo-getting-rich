@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/kenney_ufos_lasers.png" type="Texture" id=1]
+[ext_resource path="res://objects/island_target/IslandTarget.cs" type="Script" id=2]
+
+[node name="Target" type="Sprite"]
+position = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 372.752, 454.333, 92.5601, 34.1081 )
+script = ExtResource( 2 )
