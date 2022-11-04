@@ -5,6 +5,7 @@
 
 [node name="Target" type="Sprite"]
 position = Vector2( 1, -1 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 372.752, 454.333, 92.5601, 34.1081 )

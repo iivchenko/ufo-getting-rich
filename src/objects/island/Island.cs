@@ -3,41 +3,40 @@ using Godot;
 public class Island : Node2D
 {
     private Area2D _clickArea;
-    private IslandTarget _target;
 
     [Signal]
-    public delegate void OnClick(Island island);
+    public delegate void MouseClicked(Island island);
+
+    [Signal]
+    public delegate void MouseEntered(Island island);
+
+    [Signal]
+    public delegate void MouseExited(Island island);
 
     public override void _Ready()
     {
         _clickArea = GetNode<Area2D>("ClickArea");
-        _target = GetNode<IslandTarget>("Target");
 
         _clickArea.Connect("input_event", this, nameof(OnMouseClick));
         _clickArea.Connect("mouse_entered", this, nameof(OnMouseEntered));
         _clickArea.Connect("mouse_exited", this, nameof(OnMouseExit));
     }
 
-    public void OnMouseClick(object viewport, object @event, int shape_idx)
+    private void OnMouseClick(object viewport, object @event, int shape_idx)
     {
         if (@event is InputEventMouseButton mouse && mouse.IsPressed() && mouse.ButtonIndex == (int)ButtonList.Left)
         {
-            EmitSignal(nameof(OnClick), this);
+            EmitSignal(nameof(MouseClicked), this);
         }
     }
 
-    public void OnMouseEntered()
+    private void OnMouseEntered()
     {
-        _target.Visible = true;
-        _target.Start();
+        EmitSignal(nameof(MouseEntered), this);
     }
 
-    public void OnMouseExit()
+    private void OnMouseExit()
     {
-        _target.Visible = false;
-        _target.Stop();
+        EmitSignal(nameof(MouseExited), this);
     }
 }
-
-
-
