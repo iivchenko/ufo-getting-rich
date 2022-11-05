@@ -12,10 +12,13 @@ public class GamePlay : Node2D
     private Island _island;
     private PathDrawerTool _pathDrawer;
     private List<Position2D> _coinSpawners;
+    private Timer _timer;
 
     private Label _scoreLabel;
+    private Label _timeLabel;
 
     private int _score = 0;
+    private int _time = 60;
     private Random _random;
 
     public override void _Ready()
@@ -61,10 +64,14 @@ public class GamePlay : Node2D
 
         _random = new Random();
 
-        _scoreLabel = GetNode<Label>("Ui/Score");
+        _scoreLabel = GetNode<Label>("Ui/VBoxContainer/Score");
+        _timeLabel = GetNode<Label>("Ui/VBoxContainer/Time");
 
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
+
+        _timer = GetNode<Timer>("Timer");
+        _timer.Connect("timeout", this, nameof(OnTime));
     }
 
     public override void _Process(float delta)
@@ -123,6 +130,11 @@ public class GamePlay : Node2D
 
     private void OnPlayerCollidedCoin()
     {
+        if (_timer.IsStopped())
+        {
+            _timer.Start();
+        }
+
         _score += 1;
         _scoreLabel.Text = $"Score: {_score}";
 
@@ -134,5 +146,16 @@ public class GamePlay : Node2D
         coin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
 
         _scale.AddChild(coin);
+    }
+
+    private void OnTime()
+    {
+        if (_time == 0)
+        {
+            // Stop Game
+        }
+
+        _time--;
+        _timeLabel.Text = $"Time: {_time}s";
     }
 }
