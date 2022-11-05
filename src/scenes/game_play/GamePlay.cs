@@ -64,8 +64,8 @@ public class GamePlay : Node2D
 
         _random = new Random();
 
-        _scoreLabel = GetNode<Label>("Ui/VBoxContainer/Score");
-        _timeLabel = GetNode<Label>("Ui/VBoxContainer/Time");
+        _scoreLabel = GetNode<Label>("Ui/GamePlayUi/Score");
+        _timeLabel = GetNode<Label>("Ui/GamePlayUi/Time");
 
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
