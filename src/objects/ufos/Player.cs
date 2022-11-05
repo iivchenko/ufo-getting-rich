@@ -1,6 +1,6 @@
 using Godot;
 
-public class Player : Sprite
+public sealed class Player : KinematicBody2D
 {
     [Signal]
     public delegate void MovementFinished();
@@ -20,17 +20,12 @@ public class Player : Sprite
         IsMoving = true;
         var tween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);
         tween.TweenProperty(this, "global_position", globalPosition, 1.0f);
-        tween.Connect("finished", this, nameof(OnStop));
         tween.Connect("finished", this, nameof(OnMovementFinished));
-    }
-
-    private void OnStop()
-    {
-        IsMoving = false;
     }
 
     private void OnMovementFinished()
     {
+        IsMoving = false;
         EmitSignal(nameof(MovementFinished));
     }
 }

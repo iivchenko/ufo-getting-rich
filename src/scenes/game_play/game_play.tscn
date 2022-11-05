@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/island/island.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/hexagon_guide.png" type="Texture" id=2]
 [ext_resource path="res://objects/ufos/pink_ufo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/kenney_bg_elements.png" type="Texture" id=4]
 [ext_resource path="res://scenes/game_play/GamePlay.cs" type="Script" id=5]
-[ext_resource path="res://assets/sprites/kenney_platformer_complete.png" type="Texture" id=6]
+[ext_resource path="res://objects/coin/coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/island_target/island_target.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/game_play/PathDrawerTool.cs" type="Script" id=8]
 
 [node name="GamePlay" type="Node2D"]
 script = ExtResource( 5 )
@@ -60,10 +61,12 @@ region_enabled = true
 region_rect = Rect2( 947.185, 1356.18, 191.331, 130.03 )
 
 [node name="Islands" type="Node2D" parent="Scale"]
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+Switch = true
 
 [node name="HexagonGuide" type="Sprite" parent="Scale/Islands"]
 visible = false
@@ -75,7 +78,7 @@ __meta__ = {
 }
 
 [node name="Island1" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 254, -128 )
+position = Vector2( 252, -128 )
 
 [node name="Island2" parent="Scale/Islands" instance=ExtResource( 1 )]
 position = Vector2( 768, -128 )
@@ -96,7 +99,6 @@ position = Vector2( 2, 288 )
 position = Vector2( 512, 254 )
 
 [node name="CoinSpawners" type="Node2D" parent="Scale"]
-visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -115,51 +117,63 @@ position = Vector2( 880, 544 )
 position = Vector2( 130, 512 )
 
 [node name="CoinSpawner5" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 128, 96 )
+position = Vector2( 118, 96 )
 
 [node name="CoinSpawner6" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 416, 128 )
+position = Vector2( 378, 84 )
 
 [node name="CoinSpawner7" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 610, 128 )
+position = Vector2( 640, 88 )
 
 [node name="CoinSpawner8" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 696, 302 )
+position = Vector2( 768, 300 )
 
 [node name="CoinSpawner9" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 610, 480 )
+position = Vector2( 640, 520 )
 
 [node name="CoinSpawner10" type="Position2D" parent="Scale/CoinSpawners"]
 position = Vector2( 512, 736 )
 
 [node name="CoinSpawner17" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 416, 478 )
+position = Vector2( 388, 514 )
 
 [node name="CoinSpawner11" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 322, 304 )
+position = Vector2( 254, 292 )
 
 [node name="CoinSpawner14" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 290, 480 )
+position = Vector2( 254, 440 )
 
 [node name="CoinSpawner15" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 770, 128 )
+position = Vector2( 772, 160 )
 
 [node name="CoinSpawner16" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 770, 480 )
+position = Vector2( 766, 448 )
 
 [node name="CoinSpawner12" type="Position2D" parent="Scale/CoinSpawners"]
 position = Vector2( 512, 304 )
 
 [node name="CoinSpawner13" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 272, 128 )
+position = Vector2( 254, 148 )
 
-[node name="Coins" type="Node2D" parent="Scale"]
+[node name="CoinSpawner18" type="Position2D" parent="Scale/CoinSpawners"]
+position = Vector2( 504, 14 )
 
-[node name="StartCoin" type="Sprite" parent="Scale/Coins"]
-position = Vector2( 512, 304 )
-texture = ExtResource( 6 )
-region_enabled = true
-region_rect = Rect2( 2761.45, 31.8366, 64.9941, 64.3063 )
+[node name="CoinSpawner19" type="Position2D" parent="Scale/CoinSpawners"]
+position = Vector2( 516, 588 )
 
 [node name="Player" parent="Scale" instance=ExtResource( 3 )]
 position = Vector2( 254, -128 )
+
+[node name="Coin" parent="Scale" instance=ExtResource( 6 )]
+position = Vector2( 512, 290 )
+scale = Vector2( 2, 2 )
+
+[node name="Ui" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Score" type="Label" parent="Ui"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"

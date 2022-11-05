@@ -17,6 +17,11 @@ config/icon="res://icon.png"
 
 common/drop_mouse_on_gui_input_disabled=true
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="coins"
+
 [mono]
 
 project/assembly_name="Ufo Getting Rich"
