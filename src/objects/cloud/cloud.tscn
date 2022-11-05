@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/kenney_bg_elements.png" type="Texture" id=1]
+[ext_resource path="res://objects/cloud/Cloud.cs" type="Script" id=2]
+
+[node name="Cloud" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Cloud01" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -0.545975, 1473.3, 266.546, 138.47 )
+
+[node name="Cloud02" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -0.199684, 1614.26, 265.673, 137.836 )
+
+[node name="Cloud03" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 951.801, 886.465, 175.744, 119.977 )

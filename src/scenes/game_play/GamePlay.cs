@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GamePlay : Node2D
 {
     private Node2D _scale;
-    private List<Sprite> _clouds;
+    private List<Cloud> _clouds;
     private List<Island> _islands;
     private Player _player;
     private IslandTarget _target;
@@ -27,10 +27,10 @@ public class GamePlay : Node2D
         _target = GetNode<IslandTarget>("Scale/Islands/Target");
         _target.Visible = false;
 
-        _clouds = new List<Sprite>();
+        _clouds = new List<Cloud>();
         foreach (Node node in GetNode<Node2D>("Scale/Clouds").GetChildren())
         {
-            _clouds.Add(node as Sprite);
+            _clouds.Add(node as Cloud);
         }
 
         _islands = new List<Island>();
@@ -69,12 +69,12 @@ public class GamePlay : Node2D
 
     public override void _Process(float delta)
     {
-        _clouds.ForEach(cloud => cloud.Position -= Vector2.Right);
-        
-        _clouds.ForEach(cloud => 
-            { 
-                if(cloud.GlobalPosition.x + cloud.RegionRect.Size.x <= 0) 
-                    cloud.GlobalPosition = new Vector2(GetViewport().Size.x + 10, cloud.GlobalPosition.y);
+        _clouds.ForEach(cloud =>
+            {
+                if (cloud.GlobalPosition.x + cloud.Size.x <= 0)
+                {
+                    cloud.GlobalPosition = new Vector2(GetViewport().Size.x + 25, cloud.GlobalPosition.y);
+                }                    
             });
     }
 
