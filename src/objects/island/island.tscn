@@ -81,5 +81,6 @@ region_rect = Rect2( 140.856, 247.589, 58.4758, 34.2201 )
 [node name="ClickArea" type="Area2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="ClickArea"]
+visible = false
 position = Vector2( 0, 21 )
 shape = SubResource( 1 )

@@ -1,15 +1,14 @@
 using Godot;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 [Tool]
-public class PathDrawerTool : Node2D
+public class EditorTools : Node2D
 {
     private List<Node2D> _islands;
 
     [Export]
-    public bool Switch { get; set; }
+    public ToggleValues Toggle { get; set; } = ToggleValues.Off;
 
     public override void _Ready()
     {
@@ -17,7 +16,7 @@ public class PathDrawerTool : Node2D
 
         _islands = new List<Node2D>();
 
-        foreach (Node2D node in this.GetChildren())
+        foreach (Node2D node in GetParent().FindNode("Islands").GetChildren())
         {
             if (node.Name.StartsWith("Island"))
             {
@@ -35,15 +34,40 @@ public class PathDrawerTool : Node2D
     public override void _Draw()
     {
         base._Draw();
-        if (Engine.EditorHint)
+
+        var draw = false;
+
+        switch (Toggle)
+        {
+            case ToggleValues.Off:
+                draw = false;
+                break;
+
+            case ToggleValues.Editor:   
+                draw = Engine.EditorHint;
+                break;
+
+            case ToggleValues.Game:
+                draw = true;
+                break;
+        }
+
+        if (draw)
         {
             foreach (var from in _islands)
             {
                 foreach (var to in _islands.Where(x => x != from))
                 {
-                    DrawLine(from.Position, to.Position, new Color(255, 0, 0), 1);
+                    DrawLine(from.GlobalPosition, to.GlobalPosition, new Color(255, 0, 0), 1);
                 }
             }
         }
+    }
+
+    public enum ToggleValues
+    {
+        Off, 
+        Editor, 
+        Game
     }
 }

@@ -7,17 +7,72 @@
 [ext_resource path="res://scenes/game_play/GamePlay.cs" type="Script" id=5]
 [ext_resource path="res://objects/coin/coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/island_target/island_target.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/game_play/PathDrawerTool.cs" type="Script" id=8]
+[ext_resource path="res://scenes/game_play/EditorTools.cs" type="Script" id=8]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=9]
 
 [node name="GamePlay" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="GamePlayUi" type="VBoxContainer" parent="Ui"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 73.0
+margin_bottom = 42.0
+mouse_filter = 2
+theme = ExtResource( 9 )
+
+[node name="Score" type="Label" parent="Ui/GamePlayUi"]
+margin_right = 114.0
+margin_bottom = 20.0
+text = "Score: 0"
+
+[node name="Time" type="Label" parent="Ui/GamePlayUi"]
+margin_top = 24.0
+margin_right = 114.0
+margin_bottom = 44.0
+text = "Time: 60s"
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="MainMenu" type="CenterContainer" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+theme = ExtResource( 9 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu"]
+margin_left = 462.0
+margin_top = 269.0
+margin_right = 562.0
+margin_bottom = 331.0
+
+[node name="StartBtn" type="Button" parent="UI/MainMenu/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 29.0
+text = "Start"
+
+[node name="ExitBtn" type="Button" parent="UI/MainMenu/VBoxContainer"]
+margin_top = 33.0
+margin_right = 100.0
+margin_bottom = 62.0
+text = "Exit"
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Scale" type="Node2D" parent="."]
-position = Vector2( 255, 160 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 540, 255 )
+scale = Vector2( 0.9, 0.9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Clouds" type="Node2D" parent="Scale"]
 __meta__ = {
@@ -62,12 +117,10 @@ Speed = 100
 Direction = Vector2( -1, 0 )
 
 [node name="Islands" type="Node2D" parent="Scale"]
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
-Switch = true
 
 [node name="HexagonGuide" type="Sprite" parent="Scale/Islands"]
 visible = false
@@ -79,10 +132,10 @@ __meta__ = {
 }
 
 [node name="Island1" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 252, -128 )
+position = Vector2( 254.444, -142.222 )
 
 [node name="Island2" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 768, -128 )
+position = Vector2( 772.222, -142.222 )
 
 [node name="Island3" parent="Scale/Islands" instance=ExtResource( 1 )]
 position = Vector2( 1024, 304 )
@@ -94,7 +147,7 @@ position = Vector2( 768, 736 )
 position = Vector2( 258, 736 )
 
 [node name="Island6" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 2, 288 )
+position = Vector2( 4.4444, 297.778 )
 
 [node name="Target" parent="Scale/Islands" instance=ExtResource( 7 )]
 position = Vector2( 512, 254 )
@@ -106,118 +159,75 @@ __meta__ = {
 }
 
 [node name="CoinSpawner1" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 512, -128 )
+position = Vector2( 512.222, -141.111 )
 
 [node name="CoinSpawner2" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 898, 96 )
+position = Vector2( 904.444, 94.4445 )
 
 [node name="CoinSpawner3" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 880, 544 )
+position = Vector2( 882.222, 544.444 )
 
 [node name="CoinSpawner4" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 130, 512 )
+position = Vector2( 130, 514.444 )
 
 [node name="CoinSpawner5" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 118, 96 )
+position = Vector2( 118.889, 96.6667 )
 
 [node name="CoinSpawner6" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 378, 84 )
+position = Vector2( 384.445, 81.1111 )
 
 [node name="CoinSpawner7" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 640, 88 )
+position = Vector2( 641.111, 82.2222 )
 
 [node name="CoinSpawner8" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 768, 300 )
+position = Vector2( 770, 302.222 )
 
 [node name="CoinSpawner9" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 640, 520 )
+position = Vector2( 641.111, 520 )
 
 [node name="CoinSpawner10" type="Position2D" parent="Scale/CoinSpawners"]
 position = Vector2( 512, 736 )
 
 [node name="CoinSpawner17" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 388, 514 )
+position = Vector2( 386.667, 516.667 )
 
 [node name="CoinSpawner11" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 254, 292 )
+position = Vector2( 255.556, 298.889 )
 
 [node name="CoinSpawner14" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 254, 440 )
+position = Vector2( 256.667, 442.222 )
 
 [node name="CoinSpawner15" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 772, 160 )
+position = Vector2( 771.111, 156.667 )
 
 [node name="CoinSpawner16" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 766, 448 )
+position = Vector2( 768.889, 447.778 )
 
 [node name="CoinSpawner12" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 512, 304 )
+position = Vector2( 513.333, 301.111 )
 
 [node name="CoinSpawner13" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 254, 148 )
+position = Vector2( 255.556, 153.333 )
 
 [node name="CoinSpawner18" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 504, 14 )
+position = Vector2( 512.222, 6.66666 )
 
 [node name="CoinSpawner19" type="Position2D" parent="Scale/CoinSpawners"]
-position = Vector2( 516, 588 )
+position = Vector2( 515.555, 591.111 )
 
 [node name="Player" parent="Scale" instance=ExtResource( 3 )]
-position = Vector2( 254, -128 )
+position = Vector2( 254.444, -142.222 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Coin" parent="Scale" instance=ExtResource( 6 )]
-position = Vector2( 512, 290 )
+position = Vector2( 513.333, 301.111 )
 scale = Vector2( 2, 2 )
 
-[node name="UI" type="CanvasLayer" parent="."]
-visible = false
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
-[node name="Ui" type="Control" parent="UI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 9 )
-
-[node name="MainMenu" type="CenterContainer" parent="UI/Ui"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Ui/MainMenu"]
-margin_left = 462.0
-margin_top = 269.0
-margin_right = 562.0
-margin_bottom = 331.0
-
-[node name="StartBtn" type="Button" parent="UI/Ui/MainMenu/VBoxContainer"]
-margin_right = 100.0
-margin_bottom = 29.0
-text = "Start"
-
-[node name="ExitBtn" type="Button" parent="UI/Ui/MainMenu/VBoxContainer"]
-margin_top = 33.0
-margin_right = 100.0
-margin_bottom = 62.0
-text = "Exit"
-
-[node name="GamePlayUi" type="VBoxContainer" parent="UI/Ui"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 73.0
-margin_bottom = 42.0
-
-[node name="Score" type="Label" parent="UI/Ui/GamePlayUi"]
-margin_right = 114.0
-margin_bottom = 20.0
-text = "Score: 0"
-
-[node name="Time" type="Label" parent="UI/Ui/GamePlayUi"]
-margin_top = 24.0
-margin_right = 114.0
-margin_bottom = 44.0
-text = "Time: 60s"
+[node name="Tools" type="Node2D" parent="."]
+script = ExtResource( 8 )
+Toggle = 1

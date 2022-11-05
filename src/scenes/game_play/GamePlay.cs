@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class GamePlay : Node2D
 {
+    private Camera2D _camera;
     private Node2D _scale;
     private List<Cloud> _clouds;
     private List<Island> _islands;
     private Player _player;
     private IslandTarget _target;
     private Island _island;
-    private PathDrawerTool _pathDrawer;
+    private Node2D _spawner;
     private List<Position2D> _coinSpawners;
     private Timer _timer;
 
@@ -23,7 +24,16 @@ public class GamePlay : Node2D
 
     public override void _Ready()
     {
+        var size = GetViewportRect();
+        _camera = GetNode<Camera2D>("Camera2D");
+        _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
+        _camera.Zoom = new Vector2(1080.0f / size.Size.y, 1080.0f / size.Size.y);
+       
         _scale = GetNode<Node2D>("Scale");
+        
+        //_scale.Position = new Vector2(size.Size.x / 1920.0f * 540.0f, size.Size.y / 1080.0f * 255.0f);
+        //_scale.Scale = new Vector2(size.Size.x / 1920 * 0.9f, size.Size.x / 1920.0f * 0.9f);
+
         _player = GetNode<Player>("Scale/Player");
         _player.Connect(nameof(Player.MovementFinished), this, nameof(OnPlayerFinishedMovement));
 
@@ -51,8 +61,9 @@ public class GamePlay : Node2D
             }
         }
 
+        _spawner = GetNode<Node2D>("Scale/CoinSpawners");
         _coinSpawners = new List<Position2D>();
-        foreach(var node in GetNode<Node2D>("Scale/CoinSpawners").GetChildren())
+        foreach(var node in _spawner.GetChildren())
         {
             var spawner = node as Position2D;
 
@@ -138,14 +149,14 @@ public class GamePlay : Node2D
         _score += 1;
         _scoreLabel.Text = $"Score: {_score}";
 
-        var position = _coinSpawners[_random.Next(_coinSpawners.Count - 1)].GlobalPosition;
+        var position = _coinSpawners[_random.Next(_coinSpawners.Count - 1)].Position;
 
         var coin = Coin.Create();
         coin.Name = "Coin";
-        coin.GlobalPosition = position;
+        coin.Position = position;
         coin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
 
-        _scale.AddChild(coin);
+        _spawner.AddChild(coin);
     }
 
     private void OnTime()
