@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GamePlay : Node2D
 {
+    public static string Path = "res://scenes/game_play/game_play.tscn";
     private Camera2D _camera;
     private Node2D _scale;
     private List<Cloud> _clouds;
@@ -15,6 +16,7 @@ public class GamePlay : Node2D
     private List<Position2D> _coinSpawners;
     private Timer _timer;
 
+    // Game Play UI
     private Label _scoreLabel;
     private Label _timeLabel;
 
@@ -28,11 +30,8 @@ public class GamePlay : Node2D
         _camera = GetNode<Camera2D>("Camera2D");
         _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
         _camera.Zoom = new Vector2(1080.0f / size.Size.y, 1080.0f / size.Size.y);
-       
+
         _scale = GetNode<Node2D>("Scale");
-        
-        //_scale.Position = new Vector2(size.Size.x / 1920.0f * 540.0f, size.Size.y / 1080.0f * 255.0f);
-        //_scale.Scale = new Vector2(size.Size.x / 1920 * 0.9f, size.Size.x / 1920.0f * 0.9f);
 
         _player = GetNode<Player>("Scale/Player");
         _player.Connect(nameof(Player.MovementFinished), this, nameof(OnPlayerFinishedMovement));
@@ -75,8 +74,8 @@ public class GamePlay : Node2D
 
         _random = new Random();
 
-        _scoreLabel = GetNode<Label>("Ui/GamePlayUi/Score");
-        _timeLabel = GetNode<Label>("Ui/GamePlayUi/Time");
+        _scoreLabel = GetNode<Label>("UI/GamePlayUi/Score");
+        _timeLabel = GetNode<Label>("UI/GamePlayUi/Time");
 
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
@@ -167,6 +166,6 @@ public class GamePlay : Node2D
         }
 
         _time--;
-        _timeLabel.Text = $"Time: {_time}s";
+        _timeLabel.Text = $"Time: {_time} s";
     }
 }
