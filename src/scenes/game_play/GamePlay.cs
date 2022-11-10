@@ -7,7 +7,6 @@ public class GamePlay : Node2D
     public static string Path = "res://scenes/game_play/game_play.tscn";
     private Camera2D _camera;
     private Node2D _scale;
-    private List<Cloud> _clouds;
     private List<Island> _islands;
     private Player _player;
     private IslandTarget _target;
@@ -19,6 +18,9 @@ public class GamePlay : Node2D
     // Game Play UI
     private Label _scoreLabel;
     private Label _timeLabel;
+    private Control _gameOver;
+    private Label _finalScoreLabel;
+    private Button _restartBtn;
 
     private int _score = 0;
     private int _time = 60;
@@ -38,12 +40,6 @@ public class GamePlay : Node2D
 
         _target = GetNode<IslandTarget>("Scale/Islands/Target");
         _target.Visible = false;
-
-        _clouds = new List<Cloud>();
-        foreach (Node node in GetNode<Node2D>("Scale/Clouds").GetChildren())
-        {
-            _clouds.Add(node as Cloud);
-        }
 
         _islands = new List<Island>();
         foreach (Node node in GetNode<Node2D>("Scale/Islands").GetChildren())
@@ -76,23 +72,15 @@ public class GamePlay : Node2D
 
         _scoreLabel = GetNode<Label>("UI/GamePlayUi/Score");
         _timeLabel = GetNode<Label>("UI/GamePlayUi/Time");
-
+        _gameOver = GetNode<Control>("UI/GameOver");
+        _finalScoreLabel = GetNode<Label>("UI/GameOver/VBox/FinalScoreLabel");
+        _restartBtn = GetNode<Button>("UI/GameOver/VBox/ReStartBtn");
+        _restartBtn.Connect("pressed", this, nameof(OnRestartClicked));
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
 
         _timer = GetNode<Timer>("Timer");
         _timer.Connect("timeout", this, nameof(OnTime));
-    }
-
-    public override void _Process(float delta)
-    {
-        _clouds.ForEach(cloud =>
-            {
-                if (cloud.GlobalPosition.x + cloud.Size.x <= 0)
-                {
-                    cloud.GlobalPosition = new Vector2(GetViewport().Size.x + 25, cloud.GlobalPosition.y);
-                }                    
-            });
     }
 
     private void OnPlayerFinishedMovement()
@@ -162,10 +150,18 @@ public class GamePlay : Node2D
     {
         if (_time == 0)
         {
-            // Stop Game
+            _timer.Stop();
+            _gameOver.Visible = true;
+            _finalScoreLabel.Text = $"Your score is: {_score}";
+            return;
         }
 
         _time--;
         _timeLabel.Text = $"Time: {_time} s";
+    }
+
+    private void OnRestartClicked()
+    {
+        GetTree().ReloadCurrentScene();
     }
 }
