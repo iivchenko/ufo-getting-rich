@@ -2,6 +2,8 @@ using Godot;
 
 public class MainMenu : CenterContainer
 {
+    public static string Path = "res://scenes/main_menu/main_menu.tscn";
+
     private Button _startBtn;
     private Button _exitBtn;
 

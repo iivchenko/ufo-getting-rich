@@ -21,6 +21,7 @@ public class GamePlay : Node2D
     private Control _gameOver;
     private Label _finalScoreLabel;
     private Button _restartBtn;
+    private Button _exitBtn;
 
     private int _score = 0;
     private int _time = 60;
@@ -76,6 +77,8 @@ public class GamePlay : Node2D
         _finalScoreLabel = GetNode<Label>("UI/GameOver/VBox/FinalScoreLabel");
         _restartBtn = GetNode<Button>("UI/GameOver/VBox/ReStartBtn");
         _restartBtn.Connect("pressed", this, nameof(OnRestartClicked));
+        _exitBtn = GetNode<Button>("UI/GameOver/VBox/ExitBtn");
+        _exitBtn.Connect("pressed", this, nameof(OnExitClicked));
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
 
@@ -163,5 +166,10 @@ public class GamePlay : Node2D
     private void OnRestartClicked()
     {
         GetTree().ReloadCurrentScene();
+    }
+
+    private void OnExitClicked()
+    {
+        GetTree().ChangeScene(MainMenu.Path);
     }
 }

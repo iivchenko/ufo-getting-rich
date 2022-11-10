@@ -87,6 +87,12 @@ margin_right = 190.0
 margin_bottom = 53.0
 text = "Restart"
 
+[node name="ExitBtn" type="Button" parent="UI/GameOver/VBox"]
+margin_top = 24.0
+margin_right = 190.0
+margin_bottom = 53.0
+text = "Exit"
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Scale" type="Node2D" parent="."]
