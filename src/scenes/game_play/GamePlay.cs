@@ -16,8 +16,8 @@ public class GamePlay : Node2D
     private Timer _timer;
 
     // Game Play UI
-    private Label _scoreLabel;
-    private Label _timeLabel;
+    private CoinCountLabel _coinsLbl;
+    private TimeCcountDownLabel _timeLabel;
     private Control _gameOver;
     private Label _finalScoreLabel;
     private Button _restartBtn;
@@ -73,8 +73,9 @@ public class GamePlay : Node2D
 
         _random = new Random();
 
-        _scoreLabel = GetNode<Label>("UI/GamePlayUi/Score");
-        _timeLabel = GetNode<Label>("UI/GamePlayUi/Time");
+        _coinsLbl = GetNode<CoinCountLabel>("UI/GamePlayUi/Coins");
+        _timeLabel = GetNode<TimeCcountDownLabel>("UI/GamePlayUi/Time");
+        _timeLabel.Time = _time;
         _gameOver = GetNode<Control>("UI/GameOver");
         _finalScoreLabel = GetNode<Label>("UI/GameOver/Center/VBox/FinalScoreLabel");
         _restartBtn = GetNode<Button>("UI/GameOver/Center/VBox/ReStartBtn");
@@ -143,7 +144,7 @@ public class GamePlay : Node2D
         }
 
         _score += 1;
-        _scoreLabel.Text = $"Score: {_score}";
+        _coinsLbl.Value = _score;
 
         var position = _coinSpawners[_random.Next(_coinSpawners.Count - 1)].Position;
 
@@ -166,7 +167,7 @@ public class GamePlay : Node2D
         }
 
         _time--;
-        _timeLabel.Text = $"Time: {_time} s";
+        _timeLabel.Time = _time;
     }
 
     private void OnRestartClicked()

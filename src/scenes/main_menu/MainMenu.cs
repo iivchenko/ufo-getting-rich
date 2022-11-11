@@ -14,10 +14,10 @@ public sealed class MainMenu : MarginContainer
         _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
 
-        _startBtn = GetNode<Button>("Center/VBox/StartBtn");
+        _startBtn = GetNode<Button>("VSplit/Center/VBox/StartBtn");
         _startBtn.Connect("pressed", this, nameof(OnStartBtnClicked));
 
-        _exitBtn = GetNode<Button>("Center/VBox/ExitBtn");
+        _exitBtn = GetNode<Button>("VSplit/Center/VBox/ExitBtn");
         _exitBtn.Connect("pressed", this, nameof(OnExitBtnClicked));
     }
 
