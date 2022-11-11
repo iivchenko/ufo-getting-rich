@@ -23,6 +23,8 @@ public class GamePlay : Node2D
     private Button _restartBtn;
     private Button _exitBtn;
 
+    private TransitionScreen _transistor;
+
     private int _score = 0;
     private int _time = 60;
     private Random _random;
@@ -74,16 +76,20 @@ public class GamePlay : Node2D
         _scoreLabel = GetNode<Label>("UI/GamePlayUi/Score");
         _timeLabel = GetNode<Label>("UI/GamePlayUi/Time");
         _gameOver = GetNode<Control>("UI/GameOver");
-        _finalScoreLabel = GetNode<Label>("UI/GameOver/VBox/FinalScoreLabel");
-        _restartBtn = GetNode<Button>("UI/GameOver/VBox/ReStartBtn");
+        _finalScoreLabel = GetNode<Label>("UI/GameOver/Center/VBox/FinalScoreLabel");
+        _restartBtn = GetNode<Button>("UI/GameOver/Center/VBox/ReStartBtn");
         _restartBtn.Connect("pressed", this, nameof(OnRestartClicked));
-        _exitBtn = GetNode<Button>("UI/GameOver/VBox/ExitBtn");
+        _exitBtn = GetNode<Button>("UI/GameOver/Center/VBox/ExitBtn");
         _exitBtn.Connect("pressed", this, nameof(OnExitClicked));
         var startCoin = _scale.GetNode<Coin>("Coin");
         startCoin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
 
         _timer = GetNode<Timer>("Timer");
         _timer.Connect("timeout", this, nameof(OnTime));
+
+        _transistor = GetNode<TransitionScreen>("Transition/Transistor");
+        _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
+        _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
     }
 
     private void OnPlayerFinishedMovement()
@@ -170,6 +176,18 @@ public class GamePlay : Node2D
 
     private void OnExitClicked()
     {
+        _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnExitFadeOutFinished));
+        _transistor.Visible = true;
+        _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.Out);
+    }
+
+    private void OnExitFadeOutFinished()
+    {
         GetTree().ChangeScene(MainMenu.Path);
+    }
+
+    private void OnFadeInFinished()
+    {
+        _transistor.Visible = false;
     }
 }
