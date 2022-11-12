@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/kenney_enemies.png" type="Texture" id=1]
+[ext_resource path="res://objects/bee/Bee.cs" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 21.0
+
+[node name="Bee" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Colider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Frame1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 139.585, 22.7799, 61.2348, 42.1131 )
+
+[node name="Frame2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 314.939, 354.008, 56.1602, 47.2932 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true

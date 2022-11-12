@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/main_menu/MainMenu.cs" type="Script" id=2]
 [ext_resource path="res://ui/transition_screen/transition_screen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/kenney-rocket-square.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://objects/clouds/clouds.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/bee/bee.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -18,15 +19,48 @@ script = ExtResource( 2 )
 
 [node name="Clouds" parent="." instance=ExtResource( 5 )]
 
-[node name="VSplit" type="VSplitContainer" parent="."]
+[node name="Bees" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bee1" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee2" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee3" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee4" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee5" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee6" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="Bee7" parent="Bees" instance=ExtResource( 6 )]
+position = Vector2( 510, 266 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="CenterContainer" type="CenterContainer" parent="VSplit"]
+[node name="Center1" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 180.0
 margin_right = 1024.0
-margin_bottom = 153.0
+margin_bottom = 333.0
 
-[node name="Label" type="Label" parent="VSplit/CenterContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Center1"]
+show_behind_parent = true
 margin_left = 191.0
 margin_right = 833.0
 margin_bottom = 153.0
@@ -39,31 +73,36 @@ text = "UFO
 Getting rich!"
 align = 1
 
-[node name="Center" type="CenterContainer" parent="VSplit"]
-margin_top = 165.0
+[node name="Center2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 337.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 419.0
 theme = ExtResource( 1 )
 
-[node name="VBox" type="VBoxContainer" parent="VSplit/Center"]
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/Center2"]
 margin_left = 442.0
-margin_top = 176.0
 margin_right = 582.0
-margin_bottom = 258.0
+margin_bottom = 82.0
 
-[node name="StartBtn" type="Button" parent="VSplit/Center/VBox"]
+[node name="StartBtn" type="Button" parent="VBoxContainer/Center2/VBox"]
+unique_name_in_owner = true
 margin_right = 140.0
 margin_bottom = 39.0
 text = "Start"
 
-[node name="ExitBtn" type="Button" parent="VSplit/Center/VBox"]
+[node name="ExitBtn" type="Button" parent="VBoxContainer/Center2/VBox"]
+unique_name_in_owner = true
 margin_top = 43.0
 margin_right = 140.0
 margin_bottom = 82.0
 text = "Exit"
 
 [node name="Transistor" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
 margin_bottom = 600.0
+__meta__ = {
+"_edit_lock_": true
+}

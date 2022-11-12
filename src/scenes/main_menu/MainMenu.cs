@@ -10,15 +10,23 @@ public sealed class MainMenu : MarginContainer
 
     public override void _Ready()
     {
-        _transistor = GetNode<TransitionScreen>("Transistor");
+        _transistor = GetNode<TransitionScreen>("%Transistor");
         _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
 
-        _startBtn = GetNode<Button>("VSplit/Center/VBox/StartBtn");
+        _startBtn = GetNode<Button>("%StartBtn");
         _startBtn.Connect("pressed", this, nameof(OnStartBtnClicked));
 
-        _exitBtn = GetNode<Button>("VSplit/Center/VBox/ExitBtn");
+        _exitBtn = GetNode<Button>("%ExitBtn");
         _exitBtn.Connect("pressed", this, nameof(OnExitBtnClicked));
+
+        var rect = GetViewportRect();
+        var center = new Vector2(rect.End.x / 2, rect.End.y / 2);
+
+        foreach(Node2D bee in GetNode<Node2D>("Bees").GetChildren())
+        {
+            bee.GlobalPosition = center;
+        }
     }
 
     private void OnFadeInFinished()
@@ -42,8 +50,7 @@ public sealed class MainMenu : MarginContainer
     {
         _transistor.Visible = true;
         _transistor.Fade(new Color(0, 0, 0, 255), 0.5f, TransitionScreen.FadeType.Out);
-        _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnExitFadeOutFinish));
-        
+        _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnExitFadeOutFinish));        
     }
 
     private void OnExitFadeOutFinish()
