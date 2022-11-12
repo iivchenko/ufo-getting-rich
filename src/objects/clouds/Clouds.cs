@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public class CloudsMover : Node2D
+public class Clouds : Node2D
 {
     private Position2D _start;
     private Position2D _end;
