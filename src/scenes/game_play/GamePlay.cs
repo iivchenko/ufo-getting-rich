@@ -73,6 +73,8 @@ public class GamePlay : Node2D
 
         _random = new Random();
 
+        var gamePlayUi = GetNode<Control>("UI/GamePlayUi");
+        gamePlayUi.RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
         _coinsLbl = GetNode<CoinCountLabel>("UI/GamePlayUi/Coins");
         _timeLabel = GetNode<TimeCcountDownLabel>("UI/GamePlayUi/Time");
         _timeLabel.Time = _time;

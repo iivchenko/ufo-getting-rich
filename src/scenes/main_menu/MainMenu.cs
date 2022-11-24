@@ -10,6 +10,7 @@ public sealed class MainMenu : MarginContainer
 
     public override void _Ready()
     {
+        var size = GetViewportRect();
         _transistor = GetNode<TransitionScreen>("%Transistor");
         _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
@@ -27,6 +28,8 @@ public sealed class MainMenu : MarginContainer
         {
             bee.GlobalPosition = center;
         }
+
+        GetNode<Control>("VBox").RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
     }
 
     private void OnFadeInFinished()

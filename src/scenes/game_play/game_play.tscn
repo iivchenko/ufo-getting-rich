@@ -39,6 +39,8 @@ color_ramp = SubResource( 3 )
 [node name="GamePlay" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="GamePlayUi" type="VBoxContainer" parent="UI"]
@@ -100,8 +102,6 @@ margin_right = 285.0
 margin_bottom = 116.0
 text = "Exit"
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Scale" type="Node2D" parent="."]
 position = Vector2( 540, 255 )
 scale = Vector2( 0.9, 0.9 )
@@ -110,7 +110,6 @@ __meta__ = {
 }
 
 [node name="Clouds" parent="Scale" instance=ExtResource( 4 )]
-script = null
 
 [node name="Islands" type="Node2D" parent="Scale"]
 __meta__ = {
