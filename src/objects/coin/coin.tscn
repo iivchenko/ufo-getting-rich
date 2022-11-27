@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/coin/Coin.cs" type="Script" id=1]
 [ext_resource path="res://assets/sprites/kenney_platformer_complete.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/collected.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.0
@@ -26,3 +27,6 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
