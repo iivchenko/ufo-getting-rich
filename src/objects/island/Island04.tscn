@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/kenney_platformer_tiles.png" type="Texture" id=2]
+[ext_resource path="res://objects/island/IslandBase.cs" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 138.004
+
+[node name="Island" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Sprite1" type="Sprite" parent="Ground"]
+position = Vector2( 0, -30 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 560.133, 258.117, 110.937, 127.762 )
+
+[node name="Sprite2" type="Sprite" parent="Ground"]
+position = Vector2( 54, 1 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 560.177, 258.146, 110.76, 127.749 )
+
+[node name="Sprite3" type="Sprite" parent="Ground"]
+position = Vector2( 111, 33 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 672, 258, 111, 128 )
+
+[node name="Sprite4" type="Sprite" parent="Ground"]
+position = Vector2( -53.5, 2 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 560.145, 258.502, 110.737, 127.653 )
+
+[node name="Sprite5" type="Sprite" parent="Ground"]
+position = Vector2( 0.5, 33 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 560.472, 258.213, 110.664, 126.329 )
+
+[node name="Sprite6" type="Sprite" parent="Ground"]
+position = Vector2( 55.5, 65 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 672, 258, 110.804, 128 )
+
+[node name="Sprite7" type="Sprite" parent="Ground"]
+position = Vector2( -108.5, 34 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 672.127, 258.23, 111.038, 127.993 )
+
+[node name="Sprite8" type="Sprite" parent="Ground"]
+position = Vector2( -54.5, 65 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 672.021, 258.28, 110.618, 127.558 )
+
+[node name="Sprite9" type="Sprite" parent="Ground"]
+position = Vector2( 0.5, 97 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 672.018, 258.184, 110.83, 127.893 )
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="ClickArea"]
+visible = false
+position = Vector2( 0, 21 )
+shape = SubResource( 1 )

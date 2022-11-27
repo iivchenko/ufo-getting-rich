@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/kenney_enemies.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/kenney_platformer_tiles.png" type="Texture" id=2]
+[ext_resource path="res://objects/island/IslandBase.cs" type="Script" id=3]
+[ext_resource path="res://assets/sprites/kenney_platformer_complete.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 138.004
+
+[node name="Island" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Enemies" type="Sprite" parent="."]
+position = Vector2( -43, -125 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 425.458, -0.327526, 51.1999, 146.577 )
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Sprite1" type="Sprite" parent="Ground"]
+position = Vector2( 0, -31 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite2" type="Sprite" parent="Ground"]
+position = Vector2( 56, -6 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite3" type="Sprite" parent="Ground"]
+position = Vector2( 111, 33 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite4" type="Sprite" parent="Ground"]
+position = Vector2( -55.5, 1 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite5" type="Sprite" parent="Ground"]
+position = Vector2( 0.5, 33 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 336.149, 128.633, 110.744, 128.732 )
+
+[node name="Sprite6" type="Sprite" parent="Ground"]
+position = Vector2( 55.5, 65 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite7" type="Sprite" parent="Ground"]
+position = Vector2( -110.5, 22 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite8" type="Sprite" parent="Ground"]
+position = Vector2( -54.5, 65 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Sprite9" type="Sprite" parent="Ground"]
+position = Vector2( 0.5, 109 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 111, 128 )
+
+[node name="Enemies2" type="Sprite" parent="."]
+position = Vector2( 114, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 257.532, 45.7525, 56.5918, 38.3722 )
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="ClickArea"]
+visible = false
+position = Vector2( 0, 21 )
+shape = SubResource( 1 )
+
+[node name="Grass" type="Sprite" parent="."]
+position = Vector2( 66, -67 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 2243.99, 579.187, 59.0049, 69.4175 )
+
+[node name="Grass2" type="Sprite" parent="."]
+position = Vector2( -58, -9 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 2243.99, 579.187, 59.0049, 69.4175 )
+
+[node name="Mushroom" type="Sprite" parent="."]
+position = Vector2( -7, 53 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 2107.75, 852.99, 72.5493, 55.6179 )

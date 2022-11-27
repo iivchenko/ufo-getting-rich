@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://objects/island/island.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/island/Island01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/hexagon_guide.png" type="Texture" id=2]
 [ext_resource path="res://objects/ufos/pink_ufo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/clouds/clouds.tscn" type="PackedScene" id=4]
@@ -9,9 +9,12 @@
 [ext_resource path="res://objects/island_target/island_target.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/game_play/EditorTools.cs" type="Script" id=8]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=9]
+[ext_resource path="res://objects/island/Island02.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/transition_screen/transition_screen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ui/coin_count_label/CoinCountLabel.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ui/time_count_down_label/time_count_down_label.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/island/Island04.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/music/game-play-song01.wav" type="AudioStream" id=15]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.0888889, 1 )
@@ -112,10 +115,6 @@ __meta__ = {
 [node name="Clouds" parent="Scale" instance=ExtResource( 4 )]
 
 [node name="Islands" type="Node2D" parent="Scale"]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="HexagonGuide" type="Sprite" parent="Scale/Islands"]
 visible = false
@@ -129,14 +128,22 @@ __meta__ = {
 [node name="Island1" parent="Scale/Islands" instance=ExtResource( 1 )]
 position = Vector2( 254.444, -142.222 )
 
-[node name="Island2" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 772.222, -142.222 )
+[node name="Island2_but1" parent="Scale/Islands" instance=ExtResource( 1 )]
+position = Vector2( 773.333, -142.222 )
+
+[node name="Island2" parent="Scale/Islands" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 773.333, -142.222 )
 
 [node name="Island3" parent="Scale/Islands" instance=ExtResource( 1 )]
 position = Vector2( 1024, 304 )
 
-[node name="Island4" parent="Scale/Islands" instance=ExtResource( 1 )]
-position = Vector2( 768, 736 )
+[node name="Island4_but1" parent="Scale/Islands" instance=ExtResource( 1 )]
+position = Vector2( 767.778, 734.444 )
+
+[node name="Island4" parent="Scale/Islands" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 767.778, 734.444 )
 
 [node name="Island5" parent="Scale/Islands" instance=ExtResource( 1 )]
 position = Vector2( 258, 736 )
@@ -240,3 +247,7 @@ layer = 2
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true

@@ -7,10 +7,10 @@ public class GamePlay : Node2D
     public static string Path = "res://scenes/game_play/game_play.tscn";
     private Camera2D _camera;
     private Node2D _scale;
-    private List<Island> _islands;
+    private List<IslandBase> _islands;
     private Player _player;
     private IslandTarget _target;
-    private Island _island;
+    private IslandBase _island;
     private Node2D _spawner;
     private List<Position2D> _coinSpawners;
     private Timer _timer;
@@ -44,18 +44,18 @@ public class GamePlay : Node2D
         _target = GetNode<IslandTarget>("Scale/Islands/Target");
         _target.Visible = false;
 
-        _islands = new List<Island>();
+        _islands = new List<IslandBase>();
         foreach (Node node in GetNode<Node2D>("Scale/Islands").GetChildren())
         {
-            var island = node as Island;
+            var island = node as IslandBase;
 
             if (island != null)
             {
                 _islands.Add(island);
 
-                island.Connect(nameof(Island.MouseClicked), this, nameof(OnIslandClick));
-                island.Connect(nameof(Island.MouseEntered), this, nameof(OnIslandMouseEntered));
-                island.Connect(nameof(Island.MouseExited), this, nameof(OnIslandMouseExited));
+                island.Connect(nameof(IslandBase.MouseClicked), this, nameof(OnIslandClick));
+                island.Connect(nameof(IslandBase.MouseEntered), this, nameof(OnIslandMouseEntered));
+                island.Connect(nameof(IslandBase.MouseExited), this, nameof(OnIslandMouseExited));
             }
         }
 
@@ -105,7 +105,7 @@ public class GamePlay : Node2D
         }
     }
 
-    private void OnIslandClick(Island island)
+    private void OnIslandClick(IslandBase island)
     {
         if (!_player.IsMoving)
         {
@@ -113,7 +113,7 @@ public class GamePlay : Node2D
         }
     }
 
-    private void OnIslandMouseEntered(Island island)
+    private void OnIslandMouseEntered(IslandBase island)
     {
         if (_player.IsMoving)
         {
@@ -126,7 +126,7 @@ public class GamePlay : Node2D
         }
     }
 
-    private void OnIslandMouseExited(Island _)
+    private void OnIslandMouseExited(IslandBase _)
     {
         if (_player.IsMoving)
         {
