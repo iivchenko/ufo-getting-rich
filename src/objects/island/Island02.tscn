@@ -1,21 +1,114 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/sprites/kenney_enemies.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/kenney_platformer_tiles.png" type="Texture" id=2]
-[ext_resource path="res://objects/island/IslandBase.cs" type="Script" id=3]
+[ext_resource path="res://objects/island/Island02.cs" type="Script" id=3]
 [ext_resource path="res://assets/sprites/kenney_platformer_complete.png" type="Texture" id=4]
+[ext_resource path="res://assets/shaders/deformation.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/deformation = Vector2( 0, 0 )
+shader_param/sideWaysDeformationFactor = 5.0
+shader_param/knockbackFactor = 0.4
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 138.004
 
+[sub_resource type="Animation" id=3]
+resource_name = "Frog Jump"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemies2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 114, -13 ), Vector2( 7, -74 ), Vector2( -108, -17 ), Vector2( -108, -17 ), Vector2( -2, -88 ), Vector2( 114, -13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemies2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Enemies2:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 2.1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 258.122, 45.3725, 56.52, 39.6424 ), Rect2( 197.679, 336.744, 59.5568, 52.5515 ), Rect2( 258.122, 45.3725, 56.52, 39.6424 ), Rect2( 197.679, 336.744, 59.5568, 52.5515 ), Rect2( 258.122, 45.3725, 56.52, 39.6424 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemies2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 113, -13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemies2:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Enemies2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Enemies2:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 257.532, 45.7525, 56.5918, 38.3722 ) ]
+}
+
 [node name="Island" type="Node2D"]
 script = ExtResource( 3 )
-
-[node name="Enemies" type="Sprite" parent="."]
-position = Vector2( -43, -125 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 425.458, -0.327526, 51.1999, 146.577 )
 
 [node name="Ground" type="Node2D" parent="."]
 
@@ -49,6 +142,13 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 336.149, 128.633, 110.744, 128.732 )
 
+[node name="GrassMan" type="Sprite" parent="Ground"]
+material = SubResource( 2 )
+position = Vector2( 3, 27 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 425.458, -0.327526, 51.1999, 146.577 )
+
 [node name="Sprite6" type="Sprite" parent="Ground"]
 position = Vector2( 55.5, 65 )
 texture = ExtResource( 2 )
@@ -74,8 +174,9 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 111, 128 )
 
 [node name="Enemies2" type="Sprite" parent="."]
-position = Vector2( 114, -4 )
+position = Vector2( 113, -13 )
 texture = ExtResource( 1 )
+flip_h = true
 region_enabled = true
 region_rect = Rect2( 257.532, 45.7525, 56.5918, 38.3722 )
 
@@ -103,3 +204,8 @@ position = Vector2( -7, 53 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 2107.75, 852.99, 72.5493, 55.6179 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Frog Jump"
+"anims/Frog Jump" = SubResource( 3 )
+anims/RESET = SubResource( 4 )

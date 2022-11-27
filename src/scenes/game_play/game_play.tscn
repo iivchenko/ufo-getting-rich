@@ -129,10 +129,10 @@ __meta__ = {
 position = Vector2( 254.444, -142.222 )
 
 [node name="Island2_but1" parent="Scale/Islands" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 773.333, -142.222 )
 
 [node name="Island2" parent="Scale/Islands" instance=ExtResource( 10 )]
-visible = false
 position = Vector2( 773.333, -142.222 )
 
 [node name="Island3" parent="Scale/Islands" instance=ExtResource( 1 )]
