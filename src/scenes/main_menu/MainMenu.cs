@@ -24,9 +24,9 @@ public sealed class MainMenu : MarginContainer
         var rect = GetViewportRect();
         var center = new Vector2(rect.End.x / 2, rect.End.y / 2);
 
-        foreach(Node2D bee in GetNode<Node2D>("Bees").GetChildren())
+        foreach (Node2D ufo in GetNode<Node2D>("Ufos").GetChildren())
         {
-            bee.GlobalPosition = center;
+            ufo.GlobalPosition = center;
         }
 
         GetNode<Control>("VBox").RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);

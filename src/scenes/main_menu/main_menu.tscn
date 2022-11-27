@@ -5,8 +5,8 @@
 [ext_resource path="res://ui/transition_screen/transition_screen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/kenney-rocket-square.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://objects/clouds/clouds.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/bee/bee.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/music/main-menu-song01.wav" type="AudioStream" id=7]
+[ext_resource path="res://objects/ufos/yellow_ufo.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -20,31 +20,21 @@ script = ExtResource( 2 )
 
 [node name="Clouds" parent="." instance=ExtResource( 5 )]
 
-[node name="Bees" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Ufos" type="Node2D" parent="."]
 
-[node name="Bee1" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo1" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee2" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo2" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee3" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo3" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee4" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo4" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee5" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo5" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee6" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo6" parent="Ufos" instance=ExtResource( 8 )]
 
-[node name="Bee7" parent="Bees" instance=ExtResource( 6 )]
-position = Vector2( 510, 266 )
+[node name="YellowUfo7" parent="Ufos" instance=ExtResource( 8 )]
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 1024.0

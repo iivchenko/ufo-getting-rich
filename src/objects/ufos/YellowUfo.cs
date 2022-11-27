@@ -1,22 +1,17 @@
 using Godot;
 using System;
 
-public class Bee : KinematicBody2D
+public class YellowUfo : KinematicBody2D
 {
-    private Sprite _frame1;
-    private Sprite _frame2;
-    private Timer _timer;
+    private Sprite _ufo;
 
     private Vector2 _target;
     private Vector2 _dead = new Vector2(10, 10);
     private Random _random;
-    
+
     public override void _Ready()
     {
-        _frame1 = GetNode<Sprite>("Frame1");
-        _frame2 = GetNode<Sprite>("Frame2");
-        _timer = GetNode<Timer>("Timer");
-        _timer.Connect("timeout", this, nameof(OnTime));
+        _ufo = GetNode<Sprite>("Sprite");
 
         _random = new Random();
 
@@ -33,15 +28,9 @@ public class Bee : KinematicBody2D
         }
         var direction = (_target - GlobalPosition).Normalized();
 
-        _frame1.FlipH = _frame2.FlipH = direction.x > 0;
+        _ufo.FlipH = _ufo.FlipH = direction.x > 0;
 
         MoveAndSlide(direction * 100);
-    }
-
-    private void OnTime()
-    {
-        _frame1.Visible = !_frame1.Visible;
-        _frame2.Visible = !_frame2.Visible;
     }
 
     private void UpdateTarget()
