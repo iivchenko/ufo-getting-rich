@@ -173,6 +173,12 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 111, 128 )
 
+[node name="Grass" type="Sprite" parent="."]
+position = Vector2( 66, -67 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 2243.99, 579.187, 59.0049, 69.4175 )
+
 [node name="Enemies2" type="Sprite" parent="."]
 position = Vector2( 113, -13 )
 texture = ExtResource( 1 )
@@ -186,12 +192,6 @@ region_rect = Rect2( 257.532, 45.7525, 56.5918, 38.3722 )
 visible = false
 position = Vector2( 0, 21 )
 shape = SubResource( 1 )
-
-[node name="Grass" type="Sprite" parent="."]
-position = Vector2( 66, -67 )
-texture = ExtResource( 4 )
-region_enabled = true
-region_rect = Rect2( 2243.99, 579.187, 59.0049, 69.4175 )
 
 [node name="Grass2" type="Sprite" parent="."]
 position = Vector2( -58, -9 )
