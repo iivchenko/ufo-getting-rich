@@ -41,5 +41,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ format('run-foxy-run-{0}-{1}.{2}-alpha', inputs.TARGET, '0.1', github.run_number) }}
+          name: ${{ format('ufo-getting-rich-{0}-{1}.{2}-alpha', inputs.TARGET, '0.1', github.run_number) }}
           path: .publish/${{ inputs.TARGET }}
