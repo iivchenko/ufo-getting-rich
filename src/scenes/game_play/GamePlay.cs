@@ -16,6 +16,7 @@ public class GamePlay : Node2D
     private Timer _timer;
 
     // Game Play UI
+    private Control _gamePlayUi;
     private CoinCountLabel _coinsLbl;
     private TimeCcountDownLabel _timeLabel;
     private Control _gameOver;
@@ -31,10 +32,11 @@ public class GamePlay : Node2D
 
     public override void _Ready()
     {
-        var size = GetViewportRect();
         _camera = GetNode<Camera2D>("Camera2D");
-        _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
-        _camera.Zoom = new Vector2(1080.0f / size.Size.y, 1080.0f / size.Size.y);
+        _gamePlayUi = GetNode<Control>("UI/GamePlayUi");
+
+        ScaleScene();
+        GetTree().Root.Connect("size_changed", this, nameof(ScaleScene));
 
         _scale = GetNode<Node2D>("Scale");
 
@@ -72,9 +74,6 @@ public class GamePlay : Node2D
         }
 
         _random = new Random();
-
-        var gamePlayUi = GetNode<Control>("UI/GamePlayUi");
-        gamePlayUi.RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
         _coinsLbl = GetNode<CoinCountLabel>("UI/GamePlayUi/Coins");
         _timeLabel = GetNode<TimeCcountDownLabel>("UI/GamePlayUi/Time");
         _timeLabel.Time = _time;
@@ -192,5 +191,14 @@ public class GamePlay : Node2D
     private void OnFadeInFinished()
     {
         _transistor.Visible = false;
+    }
+
+    private void ScaleScene()
+    {
+        var size = GetViewportRect();
+        
+        _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
+        _camera.Zoom = new Vector2(1080.0f / size.Size.y, 1080.0f / size.Size.y);
+        _gamePlayUi.RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
     }
 }

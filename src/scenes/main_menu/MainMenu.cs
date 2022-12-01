@@ -10,7 +10,6 @@ public sealed class MainMenu : MarginContainer
 
     public override void _Ready()
     {
-        var size = GetViewportRect();
         _transistor = GetNode<TransitionScreen>("%Transistor");
         _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
@@ -29,7 +28,9 @@ public sealed class MainMenu : MarginContainer
             ufo.GlobalPosition = center;
         }
 
-        GetNode<Control>("VBox").RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
+        ScaleScene();
+
+        GetTree().Root.Connect("size_changed", this, nameof(ScaleScene));
     }
 
     private void OnFadeInFinished()
@@ -59,5 +60,11 @@ public sealed class MainMenu : MarginContainer
     private void OnExitFadeOutFinish()
     {
         GetTree().Quit();
+    }
+
+    private void ScaleScene()
+    {
+        var size = GetViewportRect();
+        GetNode<Control>("VBox").RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
     }
 }
