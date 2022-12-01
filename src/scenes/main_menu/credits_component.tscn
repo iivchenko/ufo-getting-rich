@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/header_label/header_label.tscn" type="PackedScene" id=3]
+
+[node name="CreditsComponent" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 781.0
+
+[node name="ExitCreditsBtn" type="Button" parent="VBox"]
+unique_name_in_owner = true
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 116.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
+[node name="Header" parent="VBox" instance=ExtResource( 3 )]
+margin_top = 43.0
+margin_right = 1024.0
+margin_bottom = 118.0
+text = "Many thanks to"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBox"]
+margin_top = 122.0
+margin_right = 1024.0
+margin_bottom = 781.0
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 659.0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="ThankYouSlava" type="RichTextLabel" parent="VBox/MarginContainer/VBox"]
+margin_right = 1024.0
+margin_bottom = 155.0
+grow_horizontal = 2
+focus_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+Special thanks to
+my beloved wife Myroslava 
+Who supported me for the whole journey
+[/center]"
+text = "
+Special thanks to
+my beloved wife Myroslava 
+Who supported me for the whole journey
+"
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
+__meta__ = {
+"_editor_description_": "[center] Special thanks to
+my beloved wife Myroslava 
+Who supported me for the whole journey
+[/center]"
+}
+
+[node name="ThankYouKenney" type="RichTextLabel" parent="VBox/MarginContainer/VBox"]
+margin_top = 159.0
+margin_right = 1024.0
+margin_bottom = 345.0
+grow_horizontal = 2
+focus_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+Thanks to Kenney
+For the art that I sued to build the game
+[color=yellow]http://kenney.nl/[/color]
+[/center]
+"
+text = "
+Thanks to Kenney
+For the art that I sued to build the game
+http://kenney.nl/
+
+"
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
+
+[node name="ThankYouForSfx" type="RichTextLabel" parent="VBox/MarginContainer/VBox"]
+margin_top = 349.0
+margin_right = 1024.0
+margin_bottom = 659.0
+grow_horizontal = 2
+focus_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+Thank you guys for SFX
+ChaliceWell for calming cat purring [color=yellow]https://freesound.org/people/ChaliceWell/sounds/529605/[/color]
+skymary for refreshing cat meow [color=yellow]https://freesound.org/people/skymary/sounds/412017/[/color]
+[/center]
+"
+text = "
+Thank you guys for SFX
+ChaliceWell for calming cat purring https://freesound.org/people/ChaliceWell/sounds/529605/
+skymary for refreshing cat meow https://freesound.org/people/skymary/sounds/412017/
+
+"
+fit_content_height = true
+scroll_active = false
+selection_enabled = true

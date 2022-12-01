@@ -18,11 +18,6 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
-[display]
-
-window/size/resizable=false
-window/size/fullscreen=true
-
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

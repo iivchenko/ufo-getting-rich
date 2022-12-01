@@ -92,6 +92,8 @@ public class GamePlay : Node2D
         _transistor = GetNode<TransitionScreen>("Transition/Transistor");
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinished));
         _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.In);
+
+        _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
     }
 
     private void OnPlayerFinishedMovement()
@@ -195,9 +197,8 @@ public class GamePlay : Node2D
 
     private void ScaleScene()
     {
-        var size = GetViewportRect();
+        var size = GetViewportRect();        
         
-        _camera.GlobalPosition = GetNode<Node2D>("Scale/Coin").GlobalPosition;
         _camera.Zoom = new Vector2(1080.0f / size.Size.y, 1080.0f / size.Size.y);
         _gamePlayUi.RectScale = new Vector2(size.Size.y / 1080.0f, size.Size.y / 1080.0f);
     }

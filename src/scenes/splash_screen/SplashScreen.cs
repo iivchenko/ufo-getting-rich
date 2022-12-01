@@ -14,6 +14,7 @@ public class SplashScreen : Control
 
     private void OnFadeInFinish()
     {
+        GetNode<AudioStreamPlayer>("CatMeow").Play();
         _transistor.Disconnect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinish));
 
         _transistor.Fade(new Color(0, 0, 0, 0), 1.0f, TransitionScreen.FadeType.Out);

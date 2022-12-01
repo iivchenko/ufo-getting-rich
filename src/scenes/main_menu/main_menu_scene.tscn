@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://objects/clouds/clouds.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/transition_screen/transition_screen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/ufos/yellow_ufo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/main_menu/main_menu_component.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/main_menu/MainMenu.cs" type="Script" id=6]
+[ext_resource path="res://assets/music/main-menu-song01.wav" type="AudioStream" id=7]
+[ext_resource path="res://scenes/main_menu/credits_component.tscn" type="PackedScene" id=8]
+
+[node name="MainMenuScene" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="Clouds" parent="." instance=ExtResource( 2 )]
+
+[node name="Ufos" type="Node2D" parent="."]
+
+[node name="YellowUfo1" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo2" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo3" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo4" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo5" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo6" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="YellowUfo7" parent="Ufos" instance=ExtResource( 4 )]
+
+[node name="MainMenu" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Credits" parent="." instance=ExtResource( 8 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 738.0
+
+[node name="Transistor" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
