@@ -17,8 +17,6 @@ margin_bottom = 781.0
 
 [node name="ExitCreditsBtn" type="Button" parent="VBox"]
 unique_name_in_owner = true
-margin_left = 15.0
-margin_top = 15.0
 margin_right = 116.0
 margin_bottom = 39.0
 size_flags_horizontal = 0

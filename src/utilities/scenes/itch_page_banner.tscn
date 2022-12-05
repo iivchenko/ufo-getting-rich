@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ui/header_label/header_label.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/kenney_ufos.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/kenney_bg_elements.png" type="Texture" id=4]
-[ext_resource path="res://scenes/itch/itch_page_banner/PngSave.cs" type="Script" id=5]
+[ext_resource path="res://assets/sprites/kenney_ufos.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/kenney_bg_elements.png" type="Texture" id=2]
+[ext_resource path="res://ui/header_label/header_label.tscn" type="PackedScene" id=3]
+[ext_resource path="res://utilities/scenes/PngSave.cs" type="Script" id=4]
 
 [node name="ItchPageBanner" type="ViewportContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -24.0
 margin_bottom = -250.0
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -27,23 +27,23 @@ render_target_update_mode = 3
 
 [node name="Ufo1" type="Sprite" parent="Viewport"]
 position = Vector2( 122, 174 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( -0.0104675, -0.597914, 123.242, 108.563 )
 
 [node name="Ufo2" type="Sprite" parent="Viewport"]
 position = Vector2( 915, 191 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( -0.0104675, -0.597914, 123.242, 108.563 )
 
 [node name="Cloud01" type="Sprite" parent="Viewport"]
 position = Vector2( 266, 71 )
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( -0.545975, 1473.3, 266.546, 138.47 )
 
-[node name="Label" parent="Viewport" instance=ExtResource( 1 )]
+[node name="Label" parent="Viewport" instance=ExtResource( 3 )]
 anchor_top = -0.385
 anchor_bottom = 0.081
 margin_left = 198.0
@@ -55,6 +55,6 @@ Getting rich"
 
 [node name="Cloud02" type="Sprite" parent="Viewport"]
 position = Vector2( 797, 271 )
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( -0.545975, 1473.3, 266.546, 138.47 )
