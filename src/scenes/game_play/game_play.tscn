@@ -144,10 +144,10 @@ position = Vector2( 1024, 304 )
 position = Vector2( 1023.33, 304.444 )
 
 [node name="Island4_but1" parent="Scale/Islands" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 767.778, 734.444 )
 
 [node name="Island4" parent="Scale/Islands" instance=ExtResource( 10 )]
-visible = false
 position = Vector2( 767.778, 734.444 )
 
 [node name="Island5" parent="Scale/Islands" instance=ExtResource( 11 )]

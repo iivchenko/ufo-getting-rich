@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/sprites/kenney_platformer_complete.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/kenney_platformer_tiles.png" type="Texture" id=2]
-[ext_resource path="res://objects/island/IslandBase.cs" type="Script" id=3]
+[ext_resource path="res://objects/island/Island04.cs" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 138.004
@@ -15,55 +16,61 @@ script = ExtResource( 3 )
 position = Vector2( 0, -30 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 560.133, 258.117, 110.937, 127.762 )
+region_rect = Rect2( 111.94, 645.192, 110.95, 127.115 )
 
 [node name="Sprite2" type="Sprite" parent="Ground"]
 position = Vector2( 54, 1 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 560.177, 258.146, 110.76, 127.749 )
+region_rect = Rect2( 112.056, 516.028, 110.939, 127.838 )
 
 [node name="Sprite3" type="Sprite" parent="Ground"]
 position = Vector2( 111, 33 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 672, 258, 111, 128 )
+region_rect = Rect2( 111.843, 645.257, 110.824, 127.74 )
 
 [node name="Sprite4" type="Sprite" parent="Ground"]
 position = Vector2( -53.5, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 560.145, 258.502, 110.737, 127.653 )
+region_rect = Rect2( 111.903, 515.989, 111.348, 127.854 )
+
+[node name="Key" type="Sprite" parent="Ground"]
+position = Vector2( -155, -73 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 2493.35, 1208.3, 82.7878, 52.0894 )
 
 [node name="Sprite5" type="Sprite" parent="Ground"]
-position = Vector2( 0.5, 33 )
+position = Vector2( 0.5, -52 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 560.472, 258.213, 110.664, 126.329 )
+region_rect = Rect2( 111.955, 129.092, 111.13, 128.173 )
 
 [node name="Sprite6" type="Sprite" parent="Ground"]
 position = Vector2( 55.5, 65 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 672, 258, 110.804, 128 )
+region_rect = Rect2( 111.999, 516.01, 110.932, 127.943 )
 
 [node name="Sprite7" type="Sprite" parent="Ground"]
 position = Vector2( -108.5, 34 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 672.127, 258.23, 111.038, 127.993 )
+region_rect = Rect2( 111.775, 645.45, 110.074, 127.316 )
 
 [node name="Sprite8" type="Sprite" parent="Ground"]
 position = Vector2( -54.5, 65 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 672.021, 258.28, 110.618, 127.558 )
+region_rect = Rect2( 111.914, 516.004, 111.211, 127.434 )
 
 [node name="Sprite9" type="Sprite" parent="Ground"]
 position = Vector2( 0.5, 97 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 672.018, 258.184, 110.83, 127.893 )
+region_rect = Rect2( 112.061, 644.594, 111.195, 127.806 )
 
 [node name="ClickArea" type="Area2D" parent="."]
 
