@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/transition_screen/transition_screen.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/game_play/EditorTools.cs" type="Script" id=15]
 [ext_resource path="res://assets/sprites/hexagon_guide.png" type="Texture" id=16]
 [ext_resource path="res://assets/music/game-play-song01.wav" type="AudioStream" id=17]
+[ext_resource path="res://objects/island/Island05.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.0888889, 1 )
@@ -127,34 +128,22 @@ __meta__ = {
 }
 
 [node name="Island1" parent="Scale/Islands" instance=ExtResource( 11 )]
-position = Vector2( 254.444, -142.222 )
-
-[node name="Island2_but1" parent="Scale/Islands" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 773.333, -142.222 )
+position = Vector2( 3.33334, 297.778 )
 
 [node name="Island2" parent="Scale/Islands" instance=ExtResource( 9 )]
 position = Vector2( 773.333, -142.222 )
 
-[node name="Island3_but1" parent="Scale/Islands" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 1024, 304 )
+[node name="Island7" parent="Scale/Islands" instance=ExtResource( 13 )]
+position = Vector2( 1018.89, 297.778 )
 
-[node name="Island3" parent="Scale/Islands" instance=ExtResource( 13 )]
-position = Vector2( 1023.33, 304.444 )
+[node name="Island8" parent="Scale/Islands" instance=ExtResource( 10 )]
+position = Vector2( 254.444, -148.889 )
 
-[node name="Island4_but1" parent="Scale/Islands" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 767.778, 734.444 )
-
-[node name="Island4" parent="Scale/Islands" instance=ExtResource( 10 )]
-position = Vector2( 767.778, 734.444 )
-
-[node name="Island5" parent="Scale/Islands" instance=ExtResource( 11 )]
-position = Vector2( 258, 736 )
+[node name="Island5" parent="Scale/Islands" instance=ExtResource( 18 )]
+position = Vector2( 257.778, 736.667 )
 
 [node name="Island6" parent="Scale/Islands" instance=ExtResource( 11 )]
-position = Vector2( 4.4444, 297.778 )
+position = Vector2( 766.667, 733.333 )
 
 [node name="Target" parent="Scale/Islands" instance=ExtResource( 7 )]
 position = Vector2( 512, 254 )
