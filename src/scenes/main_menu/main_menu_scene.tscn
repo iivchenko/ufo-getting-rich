@@ -44,7 +44,7 @@ visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
-margin_bottom = 738.0
+margin_bottom = 781.0
 
 [node name="Transistor" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
