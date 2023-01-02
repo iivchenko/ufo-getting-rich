@@ -183,6 +183,13 @@ public class GamePlay : Node2D
 
     private void OnRestartClicked()
     {
+        _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnRestartFadeOutFinished));
+        _transistor.Visible = true;
+        _transistor.Fade(new Color(0, 0, 0, 255), 1.0f, TransitionScreen.FadeType.Out);
+    }
+
+    private void OnRestartFadeOutFinished()
+    {
         GetTree().ReloadCurrentScene();
     }
 

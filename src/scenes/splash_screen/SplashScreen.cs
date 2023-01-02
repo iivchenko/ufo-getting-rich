@@ -7,7 +7,7 @@ public class SplashScreen : Control
     public override void _Ready()
     {
         _transistor = GetNode<TransitionScreen>("Transistor");
-
+        _transistor.Volume = 0;
         _transistor.Fade(new Color(0, 0, 0, 255), 2.0f, TransitionScreen.FadeType.In);
         _transistor.Connect(nameof(TransitionScreen.FadeFinished), this, nameof(OnFadeInFinish));
     }
