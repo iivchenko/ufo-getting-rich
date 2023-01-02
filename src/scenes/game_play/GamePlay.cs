@@ -27,7 +27,7 @@ public class GamePlay : Node2D
     private TransitionScreen _transistor;
 
     private int _score = 0;
-    private int _time = 5;// 60;
+    private int _time = 60;
     private Random _random;
 
     public override void _Ready()
@@ -146,7 +146,7 @@ public class GamePlay : Node2D
             _timer.Start();
         }
 
-        _score += 1;
+        _score++;
         _coinsLbl.Value = _score;
 
         var position = _coinSpawners[_random.Next(_coinSpawners.Count - 1)].Position;
@@ -155,8 +155,7 @@ public class GamePlay : Node2D
         coin.Name = "Coin";
         coin.Position = position;
         coin.Connect(nameof(Coin.UfoCollided), this, nameof(OnPlayerCollidedCoin));
-
-        _spawner.AddChild(coin);
+        _spawner.CallDeferred("add_child", coin);
     }
 
     private void OnTime()
