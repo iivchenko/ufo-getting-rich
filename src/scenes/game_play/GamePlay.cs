@@ -27,7 +27,7 @@ public class GamePlay : Node2D
     private TransitionScreen _transistor;
 
     private int _score = 0;
-    private int _time = 60;
+    private int _time = 5;// 60;
     private Random _random;
 
     public override void _Ready()
@@ -166,6 +166,15 @@ public class GamePlay : Node2D
             _timer.Stop();
             _gameOver.Visible = true;
             _finalScoreLabel.Text = $"Your score is: {_score}";
+
+            var restartBtn = _gameOver.GetNode<Button>("%ReStartBtn");
+            var exitBtn = _gameOver.GetNode<Button>("%ExitBtn");
+
+            var tween = CreateTween();
+            tween.TweenProperty(restartBtn, "disabled", false, 2.0f);
+            tween.Parallel().TweenProperty(exitBtn, "disabled", false, 2.0f);
+            tween.Play();
+
             return;
         }
 

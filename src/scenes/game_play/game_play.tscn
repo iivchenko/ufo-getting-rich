@@ -97,15 +97,19 @@ margin_right = 715.0
 text = "your score is: "
 
 [node name="ReStartBtn" type="Button" parent="UI/GameOver/Center/VBox"]
+unique_name_in_owner = true
 margin_top = 79.0
 margin_right = 715.0
 margin_bottom = 118.0
+disabled = true
 text = "Restart"
 
 [node name="ExitBtn" type="Button" parent="UI/GameOver/Center/VBox"]
+unique_name_in_owner = true
 margin_top = 122.0
 margin_right = 715.0
 margin_bottom = 161.0
+disabled = true
 text = "Exit"
 
 [node name="Scale" type="Node2D" parent="."]

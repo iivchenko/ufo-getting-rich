@@ -31,8 +31,5 @@ public class Island01 : IslandBase
         base._Process(delta);
 
         _pixels -= delta * 10;
-
-        
-        
     }
 }
