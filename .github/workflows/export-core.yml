@@ -7,6 +7,9 @@ on:
       TARGET: 
         required: true
         type: string
+      SUFFIX: 
+        required: true
+        type: string
   
 jobs:
   godot-export:
@@ -41,5 +44,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ format('ufo-getting-rich-{0}-{1}.{2}-alpha', inputs.TARGET, '0.1', github.run_number) }}
+          name: ${{ format('ufo-getting-rich-{0}-{1}.{2}{3}', inputs.TARGET, '0.1', github.run_number, inputs.SUFFIX) }}
           path: .publish/${{ inputs.TARGET }}
